@@ -1,0 +1,47 @@
+gana=[0]   # Gana[1er,2do,3er,4to,5to,6to,7mo,8vo,10mo,....]TIRO
+pierde=[0] # Pierde[1er,2do,3er,4to,5to,6to,7mo,8vo,10mo,....]TIRO
+x = 1
+import random
+tiempo_inicial = time() 
+while x<=1000000000:
+    punto=0
+    jugada=0     # Numero de lanzamiento de dado
+    sumad=random.randrange(1,6)+random.randrange(1,6)
+    jugada=1
+    if  sumad==7 or sumad==11:
+        gana[0]=gana[0]+1
+    elif sumad==2 or sumad==3 or sumad==12:
+        pierde[0]=pierde[0]+1
+    else:
+        punto=sumad
+    while punto != 0:
+        jugada=jugada+1
+        #aumentando elementos a lista a necesidad de numero de jugadas
+        if len(gana)<jugada:
+            gana+=[0]
+        if len(pierde)<jugada:
+            pierde+=[0]
+        sumad=random.randrange(1,6)+random.randrange(1,6)
+        if sumad==punto:
+            gana[jugada-1]=gana[jugada-1]+1
+            break
+        elif sumad==7:
+            pierde[jugada-1]=pierde[jugada-1]+1
+            break
+    x=x+1
+tiempo_final = time() 
+tiempo_ejecucion = tiempo_final - tiempo_inicial
+print ("El tiempo de ejecucion fue:",tiempo_ejecucion)
+
+#verificamos el numero de simulaciones realizadas
+suma=0    
+for i in range(0,len(gana)):
+    suma=gana[i]+suma
+for i in range(0,len(pierde)):
+    suma=pierde[i]+suma   
+print("No. de Simulaciones = ", suma)
+#las veces que se gano
+print("gana=",gana)
+#las veces que se perdio
+print("pierde="pierde)
+print("fin")
