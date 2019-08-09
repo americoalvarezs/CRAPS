@@ -1,0 +1,51 @@
+
+#juego el ahogado desarrollado por Americo Alvarez Surci
+
+import random
+d=("BOLIVIA","JUAN", "MEDICO", "ENFERMERA", "PRESIDENTE", "BUG", "FEATURE","UNIVERSIDAD") 
+x=[] 
+vacia=[] 
+y=random.choice(d) 
+x+=y 
+estado=0
+#print(x) 
+for i in range(0,len(x)):
+    vacia+=["_"]
+c=1 
+intentos=7 
+print("DESCUBRE LA PALABRA") 
+print(vacia) 
+print("---->>> Tienes",intentos,"intentos <<<----") 
+while c<intentos: 
+    letra = input("Ingrese una letra=") 
+    for i in range(0,len(x)): 
+        if(letra==x[i]): 
+            if letra in vacia: 
+                estado=estado-1 
+            vacia[i]=letra 
+            estado=estado+1 
+    print("descubriste",estado,"letras") 
+    print(vacia) 
+    if(estado==len(x)): 
+        print("\nADIVINASTE LA PALABRA =",x) 
+        break 
+    print("---->>> Te quedan",intentos-c,"Intentos <<<----") 
+    c=c+1 
+if(estado!=len(x)): 
+    vacia=[] 
+    letra = input("\nADIVINA LA PALABRA COMPLETA=") 
+    vacia+=letra 
+    i=0 
+    if len(x)==len(vacia): 
+        if x==vacia: 
+            print("\nADIVINASTE LA PALABRA =",x) 
+        else: 
+            print("\nFALLASTE-TE AHOGASTE") 
+            print("LA PALABRA ERA",x) 
+    else: 
+        print("\nFALLASTE-TE AHOGASTE") 
+        print("LA PALABRA ERA",x)
+
+
+
+
